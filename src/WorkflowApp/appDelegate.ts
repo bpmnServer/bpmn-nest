@@ -163,7 +163,7 @@ class MyAppDelegate extends DefaultAppDelegate{
 
         if (context.item) {
 
-//            console.log(`----->Event: '${event}' for ${context.item.element.type} '${context.item.element.id}' id: ${context.item.id}`);
+            console.log(`----->Event: '${event}' for ${context.item.element.type} '${context.item.element.id}' id: ${context.item.id}`);
 //            if (event == 'wait' && context.item.element.type == 'bpmn:UserTask')
 //                console.log(`----->Waiting for User Input for '${context.item.element.id}' id: ${context.item.id}`);
         }
