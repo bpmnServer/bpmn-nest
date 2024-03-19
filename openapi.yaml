@@ -1,0 +1,243 @@
+openapi: 3.0.0
+paths:
+  /:
+    get:
+      operationId: AppController_getHello
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /bpmn/model/list:
+    get:
+      operationId: BPMNController_getModelList
+      parameters: []
+      responses:
+        "200":
+          description: ""
+      security: &a1
+        - bearer: []
+  /bpmn/data/findItems:
+    post:
+      operationId: BPMNController_findItems
+      parameters: []
+      requestBody:
+        required: true
+        description: criteria in json format
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SampleApiSchema"
+      responses:
+        "201":
+          description: ""
+      security: *a1
+  /bpmn/data/delete:
+    post:
+      operationId: BPMNController_deleteInstance
+      parameters: []
+      requestBody:
+        required: true
+        description: criteria in json format
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SampleApiSchema"
+      responses:
+        "201":
+          description: ""
+      security: *a1
+  /bpmn/data/findPendingTasks:
+    post:
+      operationId: BPMNController_getPendingTasks
+      parameters: []
+      requestBody:
+        required: true
+        description: criteria in json format
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SampleApiSchema"
+      responses:
+        "201":
+          description: ""
+      security: *a1
+  /bpmn/data/findPendingWorkflows:
+    post:
+      operationId: BPMNController_getPendingWorkflows
+      parameters: []
+      responses:
+        "201":
+          description: ""
+      security: *a1
+  /bpmn/start/{workflowname}:
+    post:
+      operationId: startWorkflow
+      summary: ""
+      description: start new workflow
+      parameters:
+        - name: workflowname
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: create worflow, submit data in json format
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SampleApiSchema"
+      responses:
+        "201":
+          description: ""
+      security: *a1
+  /bpmn/invoke/{workflowname}:
+    post:
+      operationId: BPMNController_invoke
+      parameters: []
+      requestBody:
+        required: true
+        description: "{query:{},data:{}}"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SampleApiSchema"
+      responses:
+        "201":
+          description: ""
+      security: *a1
+  /wf:
+    get:
+      operationId: WFController_wfRoot
+      parameters: []
+      responses:
+        "200":
+          description: ""
+      security: &a2
+        - bearer: []
+  /wf/model/list:
+    post:
+      operationId: WFController_getModelList
+      parameters: []
+      requestBody:
+        required: true
+        description: criteria in json format
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SampleApiSchema"
+      responses:
+        "201":
+          description: ""
+      security: *a2
+  /wf/data/findItems:
+    post:
+      operationId: WFController_findItems
+      parameters: []
+      requestBody:
+        required: true
+        description: criteria in json format
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SampleApiSchema"
+      responses:
+        "201":
+          description: ""
+      security: *a2
+  /wf/data/delete:
+    post:
+      operationId: WFController_deleteInstance
+      parameters: []
+      requestBody:
+        required: true
+        description: criteria in json format
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SampleApiSchema"
+      responses:
+        "201":
+          description: ""
+      security: *a2
+  /wf/data/findPendingTasks:
+    post:
+      operationId: WFController_getPendingTasks
+      parameters: []
+      requestBody:
+        required: true
+        description: criteria in json format
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SampleApiSchema"
+      responses:
+        "201":
+          description: ""
+      security: *a2
+  /wf/data/findPendingWorkflows:
+    post:
+      operationId: WFController_getPendingWorkflows
+      parameters: []
+      responses:
+        "201":
+          description: ""
+      security: *a2
+  /wf/start/{workflowname}:
+    post:
+      operationId: startWorkflow
+      summary: ""
+      description: start new workflow
+      parameters:
+        - name: workflowname
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: create worflow, submit data in json format
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SampleApiSchema"
+      responses:
+        "201":
+          description: ""
+      security: *a2
+  /wf/invoke/{workflowname}:
+    post:
+      operationId: WFController_invoke
+      parameters: []
+      requestBody:
+        required: true
+        description: "{query:{},data:{}}"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SampleApiSchema"
+      responses:
+        "201":
+          description: ""
+      security: *a2
+info:
+  title: bpmn-server 2 example
+  description: BPMN API description
+  version: "1.0"
+  contact: {}
+tags: []
+servers: []
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+    api_key:
+      type: apiKey
+      in: header
+      name: api_key
+  schemas:
+    SampleApiSchema:
+      type: object
+      properties: {}

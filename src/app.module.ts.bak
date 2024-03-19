@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import {BPMNModule} from './bpmn/bpmn.module'
-import { WFModule } from './bpmn/wf.module';
+import {BPMNModule} from './bpmn.module'
 
 @Module({
-  imports: [BPMNModule,WFModule],
+  imports: [BPMNModule],
   controllers: [AppController],
   providers: [AppService],
 })

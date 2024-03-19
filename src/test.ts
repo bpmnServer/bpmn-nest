@@ -6,8 +6,8 @@ import { AppModule } from './app.module';
 import { AppService } from './app.service';
 
 
-import { BPMNModule } from './bpmn.module';
-import { BPMNService } from './bpmn.service';
+import { BPMNModule } from './bpmn/bpmn.module';
+import { BPMNService } from './bpmn/bpmn.service';
 import { SystemUser } from 'bpmn-server';
 
 
